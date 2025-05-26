@@ -16,6 +16,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 add_subdirectory(src)
 
 # Add test executable
-add_executable(test_slicer.exe test/test_slicer.cpp)
+add_executable(test_slicer.exe test/src/test_slicer.cpp)
 target_include_directories(test_slicer.exe PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(test_slicer.exe PRIVATE slicing_lib)
