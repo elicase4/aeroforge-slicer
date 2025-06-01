@@ -1,4 +1,6 @@
-#include "SlicingParser.hpp"
+#include "Parser/Parser.hpp"
+#include "Parser/Factory.hpp"
+#include "Parser/STLParser.hpp"
 
 int main(int argc, char** argv){
 	
@@ -10,9 +12,8 @@ int main(int argc, char** argv){
 
 	std::string filename = argv[1];
 
-	auto parserFactory = std::make_unique<SlicingParser::Factory>(filename);
-	parserFactory->readFile();
-	std::unique_ptr<SlicingParser::Parser> stlParser = parserFactory->create();
+	auto parserFactory = std::make_unique<SlicingParser::Factory>();
+	auto stlParser = parserFactory->createParser(filename);
 	stlParser->print();
 
 	return 0;
