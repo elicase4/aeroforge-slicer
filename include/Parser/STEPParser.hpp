@@ -3,18 +3,17 @@
 
 #include "Parser.hpp"
 
-#include <iostream>
-
 namespace SlicingParser {
 
 	class STEPParser: public Parser {
 		public:
-			
-			STEPParser() = default;
+			STEPParser(const std::string& filename): Parser(filename) {};
 			
 			~STEPParser() = default;
 			
-			void print();
+			void print() const override;
+			
+			void readFile() override;
 	};
 
 }

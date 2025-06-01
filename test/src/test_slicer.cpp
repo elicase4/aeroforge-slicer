@@ -1,6 +1,5 @@
 #include "Parser/Parser.hpp"
 #include "Parser/Factory.hpp"
-#include "Parser/STLParser.hpp"
 
 int main(int argc, char** argv){
 	
@@ -14,7 +13,10 @@ int main(int argc, char** argv){
 
 	auto parserFactory = std::make_unique<SlicingParser::Factory>();
 	auto stlParser = parserFactory->createParser(filename);
-	stlParser->print();
+	if (stlParser){
+		stlParser->print();
+		stlParser->readFile();
+	}
 
 	return 0;
 }

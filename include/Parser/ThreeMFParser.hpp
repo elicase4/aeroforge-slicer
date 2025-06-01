@@ -3,18 +3,18 @@
 
 #include "Parser.hpp"
 
-#include <iostream>
-
 namespace SlicingParser {
 
 	class ThreeMFParser: public Parser {
 		public:
 			
-			ThreeMFParser() = default;
+			ThreeMFParser(const std::string& filename): Parser(filename) {};
 			
 			~ThreeMFParser() = default;
 			
-			void print();
+			void print() const override;
+
+			void readFile() override;
 	};
 
 }

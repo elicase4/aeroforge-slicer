@@ -18,16 +18,17 @@ namespace SlicingParser {
 			static std::unique_ptr<Parser> createParser(const std::string& filename){
 				std::string extension = getFileExtension(filename);
 				if (extension == "STL"){
-					return std::make_unique<SlicingParser::STLParser>();
+					return std::make_unique<SlicingParser::STLParser>(filename);
 				}
 				if (extension == "STEP"){
-					return std::make_unique<SlicingParser::STEPParser>();
+					return std::make_unique<SlicingParser::STEPParser>(filename);
 				}
 				if (extension == "3MF"){
-					return std::make_unique<SlicingParser::ThreeMFParser>();
+					return std::make_unique<SlicingParser::ThreeMFParser>(filename);
 				}
 				
 				std::cerr << "Warning: Unsupported file format '" << extension << "' provided.\n";
+				
 				return nullptr;
 			}
 		
