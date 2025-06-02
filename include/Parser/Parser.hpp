@@ -1,7 +1,6 @@
 #ifndef SLICING_PARSER_HPP
 #define SLICING_PARSER_HPP
 
-#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
