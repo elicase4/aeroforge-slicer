@@ -15,16 +15,16 @@ namespace SlicingParser {
 	class Factory {
 		public:
 			
-			static std::unique_ptr<Parser> createParser(const std::string& filename){
+			static std::unique_ptr<Parser> createParser(const std::string& filename, const Endianness file_endian){
 				std::string extension = getFileExtension(filename);
 				if (extension == "STL"){
-					return std::make_unique<SlicingParser::STLParser>(filename);
+					return std::make_unique<SlicingParser::STLParser>(filename, file_endian);
 				}
 				if (extension == "STEP"){
-					return std::make_unique<SlicingParser::STEPParser>(filename);
+					return std::make_unique<SlicingParser::STEPParser>(filename, file_endian);
 				}
 				if (extension == "3MF"){
-					return std::make_unique<SlicingParser::ThreeMFParser>(filename);
+					return std::make_unique<SlicingParser::ThreeMFParser>(filename, file_endian);
 				}
 				
 				std::cerr << "Warning: Unsupported file format '" << extension << "' provided.\n";

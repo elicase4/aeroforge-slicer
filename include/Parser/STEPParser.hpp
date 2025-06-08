@@ -7,7 +7,7 @@ namespace SlicingParser {
 
 	class STEPParser: public Parser {
 		public:
-			STEPParser(const std::string& filename): Parser(filename) {};
+			STEPParser(const std::string& filename, Endianness file_endian): Parser(filename, file_endian) {};
 			
 			~STEPParser() = default;
 			

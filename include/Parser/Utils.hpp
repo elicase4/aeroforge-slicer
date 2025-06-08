@@ -3,27 +3,39 @@
 
 #include <fstream>
 #include <string>
+#include <boost/endian/conversion.hpp>
 
 namespace SlicingParser {
 	
-	namespace BinaryUtils {
+	enum struct Endianness {
+		Little,
+		Big
+	};
 		
-		// add endianess handling
-		inline std::ifstream openFile(const std::string& filename){
-			return std::ifstream{filename, std::ifstream::in | std::ifstream::binary};
-		}
-		
-		template <typename T>
-		inline void readValue(std::ifstream& input_file_stream, T* data_stream){
-			input_file_stream.read(reinterpret_cast<char*>(data_stream), sizeof(T));
-		}
+	class BinaryReader{
+		public:
+			BinaryReader(const std::string& filename, Endianness file_endian): _filename(filename), _file_endian(file_endian) {};
 
-		template <typename T>
-		inline void readArray(std::ifstream& input_file_stream, T* data_stream, size_t array_length){
-			size_t num_bytes = array_length*sizeof(T);
-			input_file_stream.read(reinterpret_cast<char*>(data_stream), num_bytes);
-		}
-	}
+			~BinaryReader() = default;
+
+			void openFile();
+
+			template <typename T>
+			void readValue(T* datastream);
+
+			template <typename T>
+			void readArray(T* datastream, size_t array_length);
+
+		private:
+			bool needsByteswap();
+			
+			template <typename T>
+			char* interpretBytes(T* pointer);
+
+			std::string _filename;
+			Endianness _file_endian;
+			std::ifstream _file_stream;
+	};
 }
 
 #endif

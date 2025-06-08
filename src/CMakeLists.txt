@@ -8,3 +8,5 @@ add_library(parser
 # Add public include path
 target_include_directories(parser PUBLIC 
 		${PROJECT_SOURCE_DIR}/include)
+target_include_directories(parser PRIVATE 
+		${BOOST_INCLUDE_DIRS})

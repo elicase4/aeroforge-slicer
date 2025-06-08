@@ -5,11 +5,13 @@
 #include <string>
 #include <vector>
 
+#include "Utils.hpp"
+
 namespace SlicingParser {
 
 	class Parser{
 		public:
-			Parser(const std::string& filename): _filename(filename) {};
+			Parser(const std::string& filename, const Endianness file_endian): _filename(filename), _file_endian(file_endian) {};
 			
 			virtual ~Parser() = default;
 			
@@ -19,6 +21,7 @@ namespace SlicingParser {
 		
 		protected:
 			std::string _filename;
+			Endianness _file_endian;
 	};
 
 }
