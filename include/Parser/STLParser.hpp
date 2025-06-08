@@ -26,7 +26,8 @@ namespace SlicingParser {
 			void readFile() override;
 		
 		private:
-			
+			void printFacet(Facet f, int facet_num);
+		
 			std::vector<Facet> _facet_list;
 	};
 

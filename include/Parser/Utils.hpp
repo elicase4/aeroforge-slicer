@@ -18,19 +18,36 @@ namespace SlicingParser {
 
 			~BinaryReader() = default;
 
-			void openFile();
-
-			template <typename T>
-			void readValue(T* datastream);
-
-			template <typename T>
-			void readArray(T* datastream, size_t array_length);
-
-		private:
-			bool needsByteswap();
+			void openFile(){
+				_file_stream = std::ifstream{_filename, std::ifstream::in | std::ifstream::binary};
+			}
 			
 			template <typename T>
-			char* interpretBytes(T* pointer);
+			void readValue(T* data_stream){
+				_file_stream.read(interpretBytes<T>(data_stream), sizeof(T));
+			}
+
+			template <typename T>
+			void readArray(T* data_stream, size_t array_length){
+				size_t num_bytes = array_length*sizeof(T);
+				_file_stream.read(interpretBytes<T>(data_stream), num_bytes);
+			}
+
+		private:
+			bool needsByteSwap(){
+				return ((_file_endian == Endianness::Little && boost::endian::order::native == boost::endian::order::big) ||
+						(_file_endian == Endianness::Big && boost::endian::order::native == boost::endian::order::little));
+			}
+
+			template <typename T>
+			char* interpretBytes(T* pointer){
+				char* casted_ptr = reinterpret_cast<char*>(pointer);
+				if (needsByteSwap()){
+					boost::endian::endian_reverse_inplace(*casted_ptr);
+				}
+				
+				return casted_ptr;
+			}
 
 			std::string _filename;
 			Endianness _file_endian;

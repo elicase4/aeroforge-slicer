@@ -30,8 +30,21 @@ void SlicingParser::STLParser::readFile(){
 		reader.readArray<float>(f.vertex1, 3);
 		reader.readArray<float>(f.vertex2, 3);
 		reader.readArray<float>(f.vertex3, 3);
-
+		
 		_facet_list.emplace_back(f);
+		
+		printFacet(f, i);
+	}
+}
 
+void SlicingParser::STLParser::printFacet(Facet f, int facet_num){
+	std::cout << "\n--------------------------------------------------\n";
+	std::cout << "                  Facet " << facet_num << " \n";
+	for (int j = 0; j < 3; ++j){
+		std::cout << "--------------------------------------------------\n";
+		std::cout << "normal_vector[" << j << "] : " << f.normal_vector[j] << "\n";
+		std::cout << "vertex1[" << j << "] : " << f.vertex1[j] << "\n";
+		std::cout << "vertex2[" << j << "] : " << f.vertex2[j] << "\n";
+		std::cout << "vertex3[" << j << "] : " << f.vertex3[j] << "\n";
 	}
 }
