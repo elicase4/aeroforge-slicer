@@ -8,7 +8,7 @@ namespace SlicingParser {
 	class ThreeMFParser: public Parser {
 		public:
 			
-			ThreeMFParser(const std::string& filename, Endianness file_endian): Parser(filename, file_endian) {};
+			ThreeMFParser(const std::string& filename, boost::endian::order file_endian): Parser(filename, file_endian) {};
 			
 			~ThreeMFParser() = default;
 			

@@ -1,20 +1,15 @@
 #ifndef PARSER_UTILS_HPP
 #define PARSER_UTILS_HPP
 
+#include <boost/endian/conversion.hpp>
 #include <fstream>
 #include <string>
-#include <boost/endian/conversion.hpp>
 
 namespace SlicingParser {
 	
-	enum struct Endianness {
-		Little,
-		Big
-	};
-		
 	class BinaryReader{
 		public:
-			BinaryReader(const std::string& filename, Endianness file_endian): _filename(filename), _file_endian(file_endian) {};
+			BinaryReader(const std::string& filename, boost::endian::order file_endian): _filename(filename), _file_endian(file_endian) {};
 
 			~BinaryReader() = default;
 
@@ -35,22 +30,24 @@ namespace SlicingParser {
 
 		private:
 			bool needsByteSwap(){
-				return ((_file_endian == Endianness::Little && boost::endian::order::native == boost::endian::order::big) ||
-						(_file_endian == Endianness::Big && boost::endian::order::native == boost::endian::order::little));
+				return ((_file_endian == boost::endian::order::little && (boost::endian::order::native == boost::endian::order::big)) ||
+						(_file_endian == boost::endian::order::big && (boost::endian::order::native == boost::endian::order::little)));
 			}
 
 			template <typename T>
 			char* interpretBytes(T* pointer){
-				char* casted_ptr = reinterpret_cast<char*>(pointer);
+				
+				auto casted_pointer = reinterpret_cast<char*>(pointer);
+				
 				if (needsByteSwap()){
-					boost::endian::endian_reverse_inplace(*casted_ptr);
+					boost::endian::endian_reverse_inplace(*casted_pointer);
 				}
 				
-				return casted_ptr;
+				return casted_pointer;
 			}
 
 			std::string _filename;
-			Endianness _file_endian;
+			boost::endian::order _file_endian;
 			std::ifstream _file_stream;
 	};
 }

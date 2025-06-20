@@ -22,6 +22,9 @@ void SlicingParser::STLParser::readFile(){
 	reader.readValue<unsigned int>(&num_facets);
 	_facet_list.reserve(num_facets);
 
+	// dummy variable for attribute byte count
+	unsigned short int attribute_byte_count;
+
 	// loop over facets and store them
 	for (size_t i = 0; i < num_facets; ++i){
 		Facet f{};
@@ -30,6 +33,8 @@ void SlicingParser::STLParser::readFile(){
 		reader.readArray<float>(f.vertex1, 3);
 		reader.readArray<float>(f.vertex2, 3);
 		reader.readArray<float>(f.vertex3, 3);
+
+		reader.readValue<unsigned short int>(&attribute_byte_count);
 		
 		_facet_list.emplace_back(f);
 		

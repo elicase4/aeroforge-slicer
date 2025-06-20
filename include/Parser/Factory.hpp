@@ -6,6 +6,7 @@
 #include "STEPParser.hpp"
 #include "ThreeMFParser.hpp"
 
+#include <boost/endian/conversion.hpp>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -15,7 +16,7 @@ namespace SlicingParser {
 	class Factory {
 		public:
 			
-			static std::unique_ptr<Parser> createParser(const std::string& filename, const Endianness file_endian){
+			static std::unique_ptr<Parser> createParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::big){
 				std::string extension = getFileExtension(filename);
 				if (extension == "STL"){
 					return std::make_unique<SlicingParser::STLParser>(filename, file_endian);

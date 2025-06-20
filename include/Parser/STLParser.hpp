@@ -2,6 +2,7 @@
 #define STL_PARSER_HPP
 
 #include "Parser.hpp"
+#include <vector>
 
 const size_t STL_BINARY_HEADER_SIZE = 80;
 
@@ -17,7 +18,7 @@ namespace SlicingParser {
 	class STLParser: public Parser {
 		public:
 			
-			STLParser(const std::string& filename, Endianness file_endian): Parser(filename, file_endian) {};
+			STLParser(const std::string& filename, boost::endian::order file_endian): Parser(filename, file_endian) {};
 			
 			~STLParser() = default;
 			

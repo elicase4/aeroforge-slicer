@@ -12,7 +12,7 @@ int main(int argc, char** argv){
 	std::string filename = argv[1];
 
 	auto parserFactory = std::make_unique<SlicingParser::Factory>();
-	auto stlParser = parserFactory->createParser(filename, SlicingParser::Endianness::Little);
+	auto stlParser = parserFactory->createParser(filename);
 	if (stlParser){
 		stlParser->print();
 		stlParser->readFile();
