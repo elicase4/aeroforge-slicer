@@ -17,7 +17,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Add test executable
 add_executable(test_slicer.exe test/src/test_slicer.cpp)
-target_link_libraries(test_slicer.exe PRIVATE parser)
+target_link_libraries(test_slicer.exe PRIVATE aeroforge_slicer)
 
 # External Library Example
 find_package(Boost REQUIRED)

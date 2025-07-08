@@ -1,6 +1,6 @@
 #include "Geometry/GeometryModel.hpp"
 
-void Geometry::printFacet(Geometry::GeometryModel model){
+void Geometry::printFacet(const Geometry::GeometryModel& model){
 	
 	for (size_t i = 0; i < model.facetsCount(); i++){
 		std::cout << "\n--------------------------------------------------\n";

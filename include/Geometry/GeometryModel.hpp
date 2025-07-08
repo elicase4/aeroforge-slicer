@@ -28,6 +28,6 @@ namespace Geometry{
 	};
 
 	// debug print functions
-	void printFacet(GeometryModel model);
+	void printFacet(const GeometryModel& model);
 
 }
