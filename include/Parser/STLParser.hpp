@@ -1,7 +1,7 @@
 #ifndef STL_PARSER_HPP
 #define STL_PARSER_HPP
 
-#include "Parser.hpp"
+#include "BaseParser.hpp"
 #include <vector>
 
 const size_t STL_BINARY_HEADER_SIZE = 80;
@@ -13,12 +13,12 @@ struct Facet{
 	float vertex3[3];
 };
 
-namespace SlicingParser {
+namespace Parser {
 
-	class STLParser: public Parser {
+	class STLParser: public BaseParser {
 		public:
 			
-			STLParser(const std::string& filename, boost::endian::order file_endian): Parser(filename, file_endian) {};
+			STLParser(const std::string& filename, boost::endian::order file_endian): BaseParser(filename, file_endian) {};
 			
 			~STLParser() = default;
 			

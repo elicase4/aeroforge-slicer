@@ -1,13 +1,13 @@
 #include "Parser/STLParser.hpp"
 
-void SlicingParser::STLParser::print() const{
+void Parser::STLParser::print() const{
 	std::cout << "Using the STL Parser.\n";
 }
 
-void SlicingParser::STLParser::readFile(){
+void Parser::STLParser::readFile(){
 
 	// open the input file assuming it is in binary format, add ascii later if wanted
-	auto reader = SlicingParser::BinaryReader(_filename, _file_endian);
+	auto reader = Parser::BinaryReader(_filename, _file_endian);
 	reader.openFile();
 
 	// initialize varibles used for parsing
@@ -42,7 +42,7 @@ void SlicingParser::STLParser::readFile(){
 	}
 }
 
-void SlicingParser::STLParser::printFacet(Facet f, int facet_num){
+void Parser::STLParser::printFacet(Facet f, int facet_num){
 	std::cout << "\n--------------------------------------------------\n";
 	std::cout << "                  Facet " << facet_num << " \n";
 	for (int j = 0; j < 3; ++j){

@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 
-namespace SlicingParser {
+namespace Parser {
 	
 	class BinaryReader{
 		public:

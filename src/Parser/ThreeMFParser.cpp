@@ -1,7 +1,7 @@
 #include "Parser/ThreeMFParser.hpp"
 
-void SlicingParser::ThreeMFParser::print() const{
+void Parser::ThreeMFParser::print() const{
 	std::cout << "Using the 3MF Parser.\n";
 }
 
-void SlicingParser::ThreeMFParser::readFile() {};
+void Parser::ThreeMFParser::readFile() {};

@@ -1,13 +1,13 @@
 #ifndef STEP_PARSER_HPP
 #define STEP_PARSER_HPP
 
-#include "Parser.hpp"
+#include "BaseParser.hpp"
 
-namespace SlicingParser {
+namespace Parser {
 
-	class STEPParser: public Parser {
+	class STEPParser: public BaseParser {
 		public:
-			STEPParser(const std::string& filename, boost::endian::order file_endian): Parser(filename, file_endian) {};
+			STEPParser(const std::string& filename, boost::endian::order file_endian): BaseParser(filename, file_endian) {};
 			
 			~STEPParser() = default;
 			

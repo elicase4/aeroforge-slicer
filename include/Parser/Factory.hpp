@@ -1,7 +1,7 @@
-#ifndef SLICING_FACTORY_HPP
-#define SLICING_FACTORY_HPP
+#ifndef PARSER_FACTORY_HPP
+#define PARSER_FACTORY_HPP
 
-#include "Parser.hpp"
+#include "BaseParser.hpp"
 #include "STLParser.hpp"
 #include "STEPParser.hpp"
 #include "ThreeMFParser.hpp"
@@ -11,21 +11,21 @@
 #include <stdexcept>
 #include <string>
 
-namespace SlicingParser {
+namespace Parser {
 
 	class Factory {
 		public:
 			
-			static std::unique_ptr<Parser> createParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::big){
+			static std::unique_ptr<BaseParser> createParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::big){
 				std::string extension = getFileExtension(filename);
 				if (extension == "STL"){
-					return std::make_unique<SlicingParser::STLParser>(filename, file_endian);
+					return std::make_unique<Parser::STLParser>(filename, file_endian);
 				}
 				if (extension == "STEP"){
-					return std::make_unique<SlicingParser::STEPParser>(filename, file_endian);
+					return std::make_unique<Parser::STEPParser>(filename, file_endian);
 				}
 				if (extension == "3MF"){
-					return std::make_unique<SlicingParser::ThreeMFParser>(filename, file_endian);
+					return std::make_unique<Parser::ThreeMFParser>(filename, file_endian);
 				}
 				
 				std::cerr << "Warning: Unsupported file format '" << extension << "' provided.\n";
