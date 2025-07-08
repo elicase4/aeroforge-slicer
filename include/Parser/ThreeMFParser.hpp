@@ -1,14 +1,14 @@
 #ifndef THREEMF_PARSER_HPP
 #define THREEMF_PARSER_HPP
 
-#include "Parser.hpp"
+#include "BaseParser.hpp"
 
-namespace SlicingParser {
+namespace Parser {
 
-	class ThreeMFParser: public Parser {
+	class ThreeMFParser: public BaseParser {
 		public:
 			
-			ThreeMFParser(const std::string& filename, boost::endian::order file_endian): Parser(filename, file_endian) {};
+			ThreeMFParser(const std::string& filename, boost::endian::order file_endian): BaseParser(filename, file_endian) {};
 			
 			~ThreeMFParser() = default;
 			

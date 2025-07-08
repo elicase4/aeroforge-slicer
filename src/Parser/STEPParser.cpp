@@ -1,7 +1,7 @@
 #include "Parser/STEPParser.hpp"
 
-void SlicingParser::STEPParser::print() const{
+void Parser::STEPParser::print() const{
 	std::cout << "Using the STEP Parser.\n";
 }
 
-void SlicingParser::STEPParser::readFile() {};
+void Parser::STEPParser::readFile() {};

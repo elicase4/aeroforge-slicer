@@ -1,55 +1,59 @@
 #include "Parser/STLParser.hpp"
 
-void SlicingParser::STLParser::print() const{
+void Parser::STLParser::print() const{
 	std::cout << "Using the STL Parser.\n";
 }
 
-void SlicingParser::STLParser::readFile(){
+void Parser::STLParser::readFile(){
 
 	// open the input file assuming it is in binary format, add ascii later if wanted
-	auto reader = SlicingParser::BinaryReader(_filename, _file_endian);
+	auto reader = Parser::BinaryReader(_filename, _file_endian);
 	reader.openFile();
 
 	// initialize varibles used for parsing
 	char header[STL_BINARY_HEADER_SIZE + 1];
 	unsigned int num_facets;
-	
+
 	// Read the header
 	reader.readArray<char>(header, STL_BINARY_HEADER_SIZE);
 	header[STL_BINARY_HEADER_SIZE] = '\0';
 	
 	// Read the number of facets
 	reader.readValue<unsigned int>(&num_facets);
-	_facet_list.reserve(num_facets);
+	
+	// reserve space for the geometry model
+	_geometry_model.vertices.reserve(num_facets*3);
+	_geometry_model.normals.reserve(num_facets);
+	_geometry_model.facets.reserve(num_facets);
 
 	// dummy variable for attribute byte count
 	unsigned short int attribute_byte_count;
 
 	// loop over facets and store them
 	for (size_t i = 0; i < num_facets; ++i){
-		Facet f{};
+		
+		float v1[3];
+		float v2[3];
+		float v3[3];
+		float normal[3];
 
-		reader.readArray<float>(f.normal_vector, 3);
-		reader.readArray<float>(f.vertex1, 3);
-		reader.readArray<float>(f.vertex2, 3);
-		reader.readArray<float>(f.vertex3, 3);
+		reader.readArray<float>(normal, 3);
+		reader.readArray<float>(v1, 3);
+		reader.readArray<float>(v2, 3);
+		reader.readArray<float>(v3, 3);
 
 		reader.readValue<unsigned short int>(&attribute_byte_count);
 		
-		_facet_list.emplace_back(f);
+		// implement non-duplicated vertices
+		_geometry_model.vertices.push_back(v1);
+		_geometry_model.vertices.push_back(v2);
+		_geometry_model.vertices.push_back(v3);
+		_geometry_model.normals.push_back(normal);
 		
-		printFacet(f, i);
-	}
-}
-
-void SlicingParser::STLParser::printFacet(Facet f, int facet_num){
-	std::cout << "\n--------------------------------------------------\n";
-	std::cout << "                  Facet " << facet_num << " \n";
-	for (int j = 0; j < 3; ++j){
-		std::cout << "--------------------------------------------------\n";
-		std::cout << "normal_vector[" << j << "] : " << f.normal_vector[j] << "\n";
-		std::cout << "vertex1[" << j << "] : " << f.vertex1[j] << "\n";
-		std::cout << "vertex2[" << j << "] : " << f.vertex2[j] << "\n";
-		std::cout << "vertex3[" << j << "] : " << f.vertex3[j] << "\n";
+		auto vertex_idx = static_cast<std::uint32_t>(i)*3;
+		auto normal_idx = static_cast<std::uint32_t>(i);
+		_geometry_model.facets.push_back({normal_idx, vertex_idx, vertex_idx+1, vertex_idx+2});
+		
+		Geometry::printFacet(_geometry_model);
 	}
 }
