@@ -1,15 +1,19 @@
 #ifndef PARSER_FACTORY_HPP
 #define PARSER_FACTORY_HPP
 
+// standard libraries
+#include <memory>
+#include <stdexcept>
+#include <string>
+
+// boost libraries
+#include <boost/endian/conversion.hpp>
+
+// internal libraries
 #include "BaseParser.hpp"
 #include "STLParser.hpp"
 #include "STEPParser.hpp"
 #include "ThreeMFParser.hpp"
-
-#include <boost/endian/conversion.hpp>
-#include <memory>
-#include <stdexcept>
-#include <string>
 
 namespace Parser {
 

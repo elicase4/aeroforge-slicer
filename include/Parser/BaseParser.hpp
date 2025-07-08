@@ -1,10 +1,17 @@
 #ifndef BASE_PARSER_HPP
 #define BASE_PARSER_HPP
 
-#include <boost/endian/conversion.hpp>
+// standard libraries
 #include <iostream>
+#include <memory>
 #include <string>
+
+// boost libraries
+#include <boost/endian/conversion.hpp>
+
+// internal libraries
 #include "Utils.hpp"
+#include "Geometry/GeometryModel.hpp"
 
 namespace Parser {
 
@@ -17,10 +24,13 @@ namespace Parser {
 			virtual void print() const = 0;
 			
 			virtual void readFile() = 0;
+
+			auto getGeometryModel() { return std::make_unique<Geometry::GeometryModel>(_geometry_model); };
 		
 		protected:
 			std::string _filename;
 			boost::endian::order _file_endian;
+			Geometry::GeometryModel _geometry_model;
 	};
 
 }
