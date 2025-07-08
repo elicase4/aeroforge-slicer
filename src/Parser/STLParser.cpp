@@ -6,7 +6,7 @@ void SlicingParser::STLParser::print() const{
 
 void SlicingParser::STLParser::readFile(){
 
-	// open the input file assuming it is in binary format
+	// open the input file assuming it is in binary format, add ascii later if wanted
 	auto reader = SlicingParser::BinaryReader(_filename, _file_endian);
 	reader.openFile();
 
