@@ -25,7 +25,7 @@ namespace Parser {
 			
 			virtual void readFile() = 0;
 
-			auto getGeometryModelPtr() { return _geometry_model; };
+			auto getGeometryModel() { return _geometry_model; };
 		
 		protected:
 			std::string _filename;
