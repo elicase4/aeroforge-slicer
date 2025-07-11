@@ -13,6 +13,9 @@
 #include "Utils.hpp"
 #include "Geometry/GeometryModel.hpp"
 
+// global constants
+const unsigned int NUM_SPATIAL_DIMS = 3;
+
 namespace Parser {
 
 	class BaseParser{
