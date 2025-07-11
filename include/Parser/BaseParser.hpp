@@ -17,7 +17,7 @@ namespace Parser {
 
 	class BaseParser{
 		public:
-			BaseParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::native): _filename(filename), _file_endian(file_endian) {};
+			BaseParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::native): _filename(filename), _file_endian(file_endian), _geometry_model(std::make_shared<Geometry::GeometryModel>()) {};
 			
 			virtual ~BaseParser() = default;
 			
@@ -25,12 +25,12 @@ namespace Parser {
 			
 			virtual void readFile() = 0;
 
-			auto getGeometryModel() { return std::make_unique<Geometry::GeometryModel>(_geometry_model); };
+			auto getGeometryModelPtr() { return _geometry_model; };
 		
 		protected:
 			std::string _filename;
 			boost::endian::order _file_endian;
-			Geometry::GeometryModel _geometry_model;
+			std::shared_ptr<Geometry::GeometryModel> _geometry_model;
 	};
 
 }

@@ -1,6 +1,7 @@
 // standard libraries
 #include <cstdint>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 namespace Geometry{
@@ -28,6 +29,6 @@ namespace Geometry{
 	};
 
 	// debug print functions
-	void printFacet(const GeometryModel& model);
+	void printFacet(const std::shared_ptr<GeometryModel> model);
 
 }
