@@ -44,13 +44,13 @@ void Parser::STLParser::readFile(){
 
 		reader.readValue<unsigned short int>(&attribute_byte_count);
 		
-		// implement non-duplicated vertices
+		// implement non-duplicated vertices, with a hashmap
 		_geometry_model->vertices.push_back(v1);
 		_geometry_model->vertices.push_back(v2);
 		_geometry_model->vertices.push_back(v3);
 		_geometry_model->normals.push_back(normal);
 		
-		auto vertex_idx = static_cast<std::uint32_t>(i)*NUM_SPATIAL_DIMS;
+		auto vertex_idx = static_cast<std::uint32_t>(i*NUM_SPATIAL_DIMS);
 		auto normal_idx = static_cast<std::uint32_t>(i);
 		_geometry_model->facets.push_back({normal_idx, vertex_idx, vertex_idx+1, vertex_idx+2});
 		
