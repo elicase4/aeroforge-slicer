@@ -1,10 +1,11 @@
 #ifndef OBJECT_KEY_HPP
 #define OBJECT_KEY_HPP
 
+#include "Geometry/Model.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
-#include <iostream>
 #include <vector>
 #include <unordered_map>
 
@@ -50,11 +51,12 @@ namespace Geometry{
 	}
 	
 	template <typename T>
-	uint32_t addCoordinate3D(T* coord, std::vector<T*>& model_vector, std::unordered_map<Coordinate3D, uint32_t>& model_map, const T hash_coord_tol = static_cast<T>(1e-5)){
+	uint32_t addCoordinate3D(T* coord, std::vector<std::array<T, NUM_SPATIAL_DIMS>>& model_vector, std::unordered_map<Coordinate3D, uint32_t>& model_map, const T hash_coord_tol = static_cast<T>(1e-5)){
 		Coordinate3D coord3d = toCoordinate3D<T>(coord, hash_coord_tol);
 		auto result = model_map.try_emplace(coord3d, model_vector.size());
 		if (result.second){
-			model_vector.push_back(coord);
+			std::array<T, NUM_SPATIAL_DIMS> coord_array = {coord[0], coord[1], coord[2]}; 
+			model_vector.push_back(coord_array);
 		}
 		return result.first->second;
 	}

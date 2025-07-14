@@ -2,10 +2,13 @@
 #define MODEL_HPP
 
 // standard libraries
+#include <array>
 #include <cstdint>
 #include <iostream>
 #include <memory>
 #include <vector>
+
+const unsigned int NUM_SPATIAL_DIMS = 3;
 
 namespace Geometry{
 	
@@ -17,8 +20,8 @@ namespace Geometry{
 	struct GeometryModel{
 		
 		// primitive vector containers
-		std::vector<float*> vertices;
-		std::vector<float*> normals;
+		std::vector<std::array<float, NUM_SPATIAL_DIMS>> vertices;
+		std::vector<std::array<float, NUM_SPATIAL_DIMS>> normals;
 		
 		// complex vector id containers
 		std::vector<Facet> facets;

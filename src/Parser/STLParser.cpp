@@ -34,8 +34,7 @@ void Parser::STLParser::readFile(){
 	unsigned short int attribute_byte_count;
 
 	// loop over facets and store them
-	//for (size_t i = 0; i < num_facets; ++i){
-	for (size_t i = 0; i < 2; ++i){
+	for (size_t i = 0; i < num_facets; ++i){
 		
 		float v1[NUM_SPATIAL_DIMS];
 		float v2[NUM_SPATIAL_DIMS];
@@ -53,31 +52,19 @@ void Parser::STLParser::readFile(){
 
 		reader.readValue<unsigned short int>(&attribute_byte_count);
 		
-		/*
-		_geometry_model->vertices.push_back(v1);
-		_geometry_model->vertices.push_back(v2);
-		_geometry_model->vertices.push_back(v3);
-		_geometry_model->normals.push_back(normal);
-		auto vertex_idx = static_cast<std::uint32_t>(i*NUM_SPATIAL_DIMS);
-		auto normal_idx = static_cast<std::uint32_t>(i);
-		_geometry_model->facets.push_back({normal_idx, vertex_idx, vertex_idx+1, vertex_idx+2});
-		*/
-		
 		uint32_t v1_idx = Geometry::addCoordinate3D<float>(v1, _geometry_model->vertices, vertices_map, _hash_coord_tol);
-		//uint32_t v2_idx = Geometry::addCoordinate3D<float>(v2, _geometry_model->vertices, vertices_map, _hash_coord_tol);
-		//uint32_t v3_idx = Geometry::addCoordinate3D<float>(v3, _geometry_model->vertices, vertices_map, _hash_coord_tol);
+		uint32_t v2_idx = Geometry::addCoordinate3D<float>(v2, _geometry_model->vertices, vertices_map, _hash_coord_tol);
+		uint32_t v3_idx = Geometry::addCoordinate3D<float>(v3, _geometry_model->vertices, vertices_map, _hash_coord_tol);
 		uint32_t normal_idx = Geometry::addCoordinate3D<float>(normal, _geometry_model->normals, normals_map, _hash_coord_tol);
 		
-		//std::cout << "facet number: " << i << " vertex id\n================\n[v1_idx, v2_idx, v3_idx]: [" << v1_idx << ", " << v2_idx << ", " << v3_idx << "].\n";
-		std::cout << "facet number: " << i << " vertex id\n================\n[v1_idx, v2_idx, v3_idx]: [" << v1_idx << ", " << v1_idx << ", " << v1_idx << "].\n";
+		std::cout << "facet number: " << i << " vertex id\n================\n[v1_idx, v2_idx, v3_idx]: [" << v1_idx << ", " << v2_idx << ", " << v3_idx << "].\n";
 		std::cout << "vertices_map:\n";
 		for (const auto& pair : vertices_map) {
 			std::cout << "======\nvertex idx: " << pair.second << "\n";
 			std::cout << "vertex val: [ " << _geometry_model->vertices[pair.second][0] << ", " << _geometry_model->vertices[pair.second][1] << ", " << _geometry_model->vertices[pair.second][2] << " ]" << "\n";
 		}
 
-		//_geometry_model->facets.push_back({normal_idx, v1_idx, v2_idx, v3_idx});
-		_geometry_model->facets.push_back({normal_idx, v1_idx, v1_idx, v1_idx});
+		_geometry_model->facets.push_back({normal_idx, v1_idx, v2_idx, v3_idx});
 
 	}
 	
