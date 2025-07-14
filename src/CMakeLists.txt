@@ -3,7 +3,7 @@ add_library(aeroforge_slicer STATIC
 			Parser/STLParser.cpp
 			Parser/STEPParser.cpp
 			Parser/ThreeMFParser.cpp
-			Geometry/GeometryModel.cpp
+			Geometry/Model.cpp
 )
 
 # Add public include path

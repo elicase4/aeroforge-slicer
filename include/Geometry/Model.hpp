@@ -1,3 +1,6 @@
+#ifndef MODEL_HPP
+#define MODEL_HPP
+
 // standard libraries
 #include <cstdint>
 #include <iostream>
@@ -28,7 +31,9 @@ namespace Geometry{
 		std::size_t nurbsPatchesCount() const {return nurbsPatches.size(); }
 	};
 
-	// debug print functions
-	void printFacet(const std::shared_ptr<GeometryModel> model);
+	// print functions
+	void printFacetSummary(const std::shared_ptr<GeometryModel> model);
 
 }
+
+#endif
