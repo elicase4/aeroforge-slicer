@@ -1,11 +1,11 @@
-#ifndef PARSER_UTILS_HPP
-#define PARSER_UTILS_HPP
+#ifndef BINARY_READER_HPP
+#define BINARY_READER_HPP
 
 #include <boost/endian/conversion.hpp>
 #include <fstream>
 #include <string>
 
-namespace Parser {
+namespace Reader {
 	
 	class BinaryReader{
 		public:
