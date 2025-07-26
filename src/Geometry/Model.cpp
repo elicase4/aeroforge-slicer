@@ -1,7 +1,7 @@
 #include "Geometry/Model.hpp"
 
 void Geometry::printFacetSummary(const std::shared_ptr<Geometry::GeometryModel> model){
-	
+
 	for (size_t i = 0; i < model->facetsCount(); i++){
 		std::cout << "\n--------------------------------------------------\n";
 		std::cout << "                  Facet " <<  i << " \n";

@@ -12,10 +12,10 @@ int main(int argc, char** argv){
 	std::string filename = argv[1];
 
 	auto parserFactory = std::make_unique<Parser::Factory>();
-	auto stlParser = parserFactory->createParser(filename);
-	if (stlParser){
-		stlParser->print();
-		stlParser->readFile();
+	auto parser = parserFactory->createParser(filename);
+	if (parser){
+		parser->print();
+		parser->readFile();
 	}
 
 	return 0;

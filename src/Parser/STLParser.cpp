@@ -5,6 +5,12 @@ void Parser::STLParser::print() const{
 }
 
 void Parser::STLParser::readFile(){
+}
+
+void Parser::STLParser::readAsciiFile(){
+}
+
+void Parser::STLParser::readBinaryFile(){
 
 	// open the input file assuming it is in binary format, add ascii later if wanted
 	auto reader = Reader::BinaryReader(_filename, _file_endian);
@@ -56,6 +62,6 @@ void Parser::STLParser::readFile(){
 		_geometry_model->facets.push_back({normal_idx, v1_idx, v2_idx, v3_idx});
 
 	}
-	
+
 	Geometry::printFacetSummary(_geometry_model);
 }

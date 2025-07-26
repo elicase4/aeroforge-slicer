@@ -17,7 +17,12 @@ namespace Parser {
 			void print() const override;
 
 			void readFile() override;
-
+		
+		private:
+			
+			void readAsciiFile();
+			
+			void readBinaryFile();
 	};
 
 }
