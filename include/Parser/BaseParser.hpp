@@ -10,7 +10,6 @@
 #include <boost/endian/conversion.hpp>
 
 // internal libraries
-#include "Reader/BinaryReader.hpp"
 #include "Geometry/Model.hpp"
 #include "Geometry/ObjectKey.hpp"
 
