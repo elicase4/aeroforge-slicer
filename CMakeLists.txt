@@ -16,8 +16,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 # Add test executable
-add_executable(test_slicer.exe test/src/test_slicer.cpp)
-target_link_libraries(test_slicer.exe PRIVATE aeroforge_slicer)
+add_executable(test_stl_parser.exe test/src/test_stl_parser.cpp)
+target_link_libraries(test_stl_parser.exe PRIVATE aeroforge_slicer)
 
 # External Library Example
 find_package(Boost REQUIRED)

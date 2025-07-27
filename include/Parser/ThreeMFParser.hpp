@@ -8,7 +8,7 @@ namespace Parser {
 	class ThreeMFParser: public BaseParser {
 		public:
 			
-			ThreeMFParser(const std::string& filename, boost::endian::order file_endian): BaseParser(filename, file_endian) {};
+			ThreeMFParser(const std::string& filename, const boost::endian::order file_endian, const float hash_coord_tol): BaseParser(filename, file_endian, hash_coord_tol) {};
 			
 			~ThreeMFParser() = default;
 			

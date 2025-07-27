@@ -1,0 +1,170 @@
+solid Visualization Toolkit generated SLA File
+ facet normal -1 0 0
+  outer loop
+   vertex 0 100 100
+   vertex 0 100 0
+   vertex 0 0 100
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 0 100
+   vertex 0 100 0
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal -0 0 1
+  outer loop
+   vertex 100 100 100
+   vertex 0 100 100
+   vertex 100 0 100
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 100 0 100
+   vertex 0 100 100
+   vertex 0 0 100
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 100 100 0
+   vertex 100 100 100
+   vertex 100 0 0
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 100 0 0
+   vertex 100 100 100
+   vertex 100 0 100
+  endloop
+ endfacet
+ facet normal -0 0 -1
+  outer loop
+   vertex 0 100 0
+   vertex 100 100 0
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal 0 -0 -1
+  outer loop
+   vertex 0 0 0
+   vertex 100 100 0
+   vertex 100 0 0
+  endloop
+ endfacet
+ facet normal 0 1 -0
+  outer loop
+   vertex 100 100 100
+   vertex 100 100 0
+   vertex 0 100 100
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 0 100 100
+   vertex 100 100 0
+   vertex 0 100 0
+  endloop
+ endfacet
+ facet normal 0 -1 -0
+  outer loop
+   vertex 100 0 0
+   vertex 100 0 100
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal -0 -1 0
+  outer loop
+   vertex 0 0 0
+   vertex 100 0 100
+   vertex 0 0 100
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex 90 90 90
+   vertex 90 10 90
+   vertex 10 90 90
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex 10 90 90
+   vertex 90 10 90
+   vertex 10 10 90
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex 10 90 9.9999980926513672
+   vertex 90 90 9.9999980926513672
+   vertex 10 90 90
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex 10 90 90
+   vertex 90 90 9.9999980926513672
+   vertex 90 90 90
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 90 90 9.9999980926513672
+   vertex 90 10 9.9999980926513672
+   vertex 90 90 90
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 90 90 90
+   vertex 90 10 9.9999980926513672
+   vertex 90 10 90
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 90 10 9.9999980926513672
+   vertex 10 10 9.9999980926513672
+   vertex 90 10 90
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex 90 10 90
+   vertex 10 10 9.9999980926513672
+   vertex 10 10 90
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 10 10 9.9999980926513672
+   vertex 10 90 9.9999980926513672
+   vertex 10 10 90
+  endloop
+ endfacet
+ facet normal 1 0 -0
+  outer loop
+   vertex 10 10 90
+   vertex 10 90 9.9999980926513672
+   vertex 10 90 90
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 90 10 9.9999980926513672
+   vertex 90 90 9.9999980926513672
+   vertex 10 10 9.9999980926513672
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 10 10 9.9999980926513672
+   vertex 90 90 9.9999980926513672
+   vertex 10 90 9.9999980926513672
+  endloop
+ endfacet
+endsolid

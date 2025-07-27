@@ -1,11 +1,12 @@
-#ifndef PARSER_UTILS_HPP
-#define PARSER_UTILS_HPP
+#ifndef BINARY_READER_HPP
+#define BINARY_READER_HPP
 
 #include <boost/endian/conversion.hpp>
 #include <fstream>
+#include <iostream>
 #include <string>
 
-namespace Parser {
+namespace Reader {
 	
 	class BinaryReader{
 		public:
@@ -15,6 +16,10 @@ namespace Parser {
 
 			void openFile(){
 				_file_stream = std::ifstream{_filename, std::ifstream::in | std::ifstream::binary};
+				if (!_file_stream.is_open()){
+					std::cerr << "Error: Could not open " << _filename << " in binary STL format.\n";
+					exit(1);
+				}
 			}
 			
 			template <typename T>
@@ -45,7 +50,7 @@ namespace Parser {
 				
 				return casted_pointer;
 			}
-
+			
 			std::string _filename;
 			boost::endian::order _file_endian;
 			std::ifstream _file_stream;
