@@ -36,12 +36,11 @@ void Parser::STLParser::readAsciiFile(){
 	while (std::getline(reader.file_stream, reader.line)){
 
 		reader.initializeLine();
-		
 		reader.readString(keyword, 1);
 
-		//std::cout << "=======================\nkeyword: " << keyword << "\n";
-		
-		if (keyword == "facet"){
+		std::cout << "keyword read as: " << keyword << " on step 1.\n";
+
+		if (boost::iequals(keyword, "facet")){
 			
 			float v1[NUM_SPATIAL_DIMS];
 			float v2[NUM_SPATIAL_DIMS];
@@ -50,17 +49,23 @@ void Parser::STLParser::readAsciiFile(){
 			unsigned int vertex_count = 0;
 			
 			reader.readString(keyword, 1);
+			
+			std::cout << "keyword read as: " << keyword << " on step 2.\n";
 
-			if (keyword == "normal"){
+			if (boost::iequals(keyword, "normal")){
 				reader.readArray<float>(normal, NUM_SPATIAL_DIMS);
 			}
 
+			reader.advanceLine();
 			reader.readString(keyword, 2);
+
+			std::cout << "keyword read as: " << keyword << " on step 3.\n";
 			
 			if (keyword == "outer loop"){
 				
 				while (keyword != "endloop"){
 					
+					reader.advanceLine();
 					reader.readString(keyword, 1);
 					
 					if (keyword == "vertex"){
@@ -85,6 +90,7 @@ void Parser::STLParser::readAsciiFile(){
 				}
 			}
 			
+			reader.advanceLine();
 			reader.readString(keyword, 1);
 
 			if (keyword == "endfacet"){

@@ -7,6 +7,7 @@
 #include <string>
 
 // boost libraries
+#include <boost/algorithm/string.hpp>
 #include <boost/endian/conversion.hpp>
 
 // internal libraries

@@ -24,44 +24,42 @@ namespace Reader {
 			}
 
 			void initializeLine(){
-				std::istringstream string_stream(line);
+				string_stream = std::istringstream(line);
+			}
+			
+			void advanceLine(){
+				std::getline(file_stream, line);
+				string_stream = std::istringstream(line);
 			}
 
 			void readDummyLine(){
 				std::string dummy_char;
-				std::getline(string_stream, dummy_char);
-				std::cout << "dummy char: " << dummy_char << "\n";
+				std::getline(file_stream, dummy_char);
 			}
 			
-			void readString(std::string& string_input, size_t num_strings){
+			void readString(std::string& string_buffer, size_t num_strings){
 				std::string char_data;
-				for (int i = 0; i < num_strings; i++){
+				for (int i = 0; i < num_strings; ++i){
 					string_stream >> char_data;
 					if (i > 0){
-						string_input.append(" " + char_data);
-					} else{
-						string_input = char_data;
+						string_buffer.append(" " + char_data);
+					} else {
+						string_buffer = char_data;
 					}
 				}
 			}
 
 			template <typename T>
-			void readArray(T* data_stream, size_t array_length){
-				
-				std::string char_data;
-
-				for (int i = 0; i < array_length; i++){
-					string_stream >> char_data;
-					data_stream[i] = std::stof(char_data);
+			void readArray(T* data_buffer, size_t array_length){
+				for (int i = 0; i < array_length; ++i){
+					string_stream >> data_buffer[i];
+					std::cout << "data value [" << i << "]: " << data_buffer[i] << "\n";
 				}
 			}
 			
 			template <typename T>
-			void readValue(T* data_stream){
-				
-				std::string char_data;
-				
-				data_stream = std::stof(char_data);
+			void readValue(T* data_buffer){
+				string_stream >> *data_buffer;
 			}
 			
 			std::string line;
