@@ -4,13 +4,16 @@
 #include "BaseSlicer.hpp"
 
 namespace Slicer {
-
-	class FacetSlicer: public BaseSlicer{
+	
+	template <typename T>
+	class FacetSlicer: public BaseSlicer<T> {
 		
 		public:
-			FacetSlicer(const std::shared_ptr<Geometry::GeometryModel> geometry_model): BaseSlicer(geometry_model) {};
+			FacetSlicer(const std::shared_ptr<Geometry::GeometryModel<T>> geometry_model): BaseSlicer<T>(geometry_model) {};
 
 			~FacetSlicer() = default;
+
+			void sliceGeometry();
 	};
 
 }
