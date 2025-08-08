@@ -105,7 +105,7 @@ void Parser::STLParser::readAsciiFile(){
 			
 	}
 	
-	Geometry::printFacetSummary(_geometry_model);
+	Geometry::printFacetSummary<float>(_geometry_model);
 
 }
 
@@ -162,5 +162,5 @@ void Parser::STLParser::readBinaryFile(){
 
 	}
 
-	Geometry::printFacetSummary(_geometry_model);
+	Geometry::printFacetSummary<float>(_geometry_model);
 }
