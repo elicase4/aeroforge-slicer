@@ -32,15 +32,13 @@ void Parser::STLParser::readAsciiFile(){
 	std::unordered_map<Geometry::Coordinate3D, uint32_t> vertices_map;
 	std::unordered_map<Geometry::Coordinate3D, uint32_t> normals_map;
 
-	// loop over the facs and store them
+	// loop over the facets and store them
 	while (std::getline(reader.file_stream, reader.line)){
 
 		reader.initializeLine();
 		reader.readString(keyword, 1);
 
-		std::cout << "keyword read as: " << keyword << " on step 1.\n";
-
-		if (boost::iequals(keyword, "facet")){
+		if (keyword == "facet"){
 			
 			float v1[NUM_SPATIAL_DIMS];
 			float v2[NUM_SPATIAL_DIMS];
@@ -50,17 +48,13 @@ void Parser::STLParser::readAsciiFile(){
 			
 			reader.readString(keyword, 1);
 			
-			std::cout << "keyword read as: " << keyword << " on step 2.\n";
-
-			if (boost::iequals(keyword, "normal")){
+			if (keyword == "normal"){
 				reader.readArray<float>(normal, NUM_SPATIAL_DIMS);
 			}
 
 			reader.advanceLine();
 			reader.readString(keyword, 2);
 
-			std::cout << "keyword read as: " << keyword << " on step 3.\n";
-			
 			if (keyword == "outer loop"){
 				
 				while (keyword != "endloop"){
