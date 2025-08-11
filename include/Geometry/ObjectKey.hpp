@@ -29,7 +29,7 @@ namespace Geometry{
 	
 }
 
-namespace std{
+namespace std {
 	
 	template <>
 	struct hash<Geometry::Coordinate3D> {
