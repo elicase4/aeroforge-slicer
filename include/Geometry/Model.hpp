@@ -33,6 +33,7 @@ namespace Geometry{
 		std::size_t normalsCount() const {return normals.size(); }
 		std::size_t facetsCount() const {return facets.size(); }
 		std::size_t nurbsPatchesCount() const {return nurbsPatches.size(); }
+
 	};
 
 	// print functions

@@ -18,7 +18,7 @@ namespace Parser {
 
 	class BaseParser{
 		public:
-			BaseParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::native, const float hash_coord_tol = 1e-5f): _filename(filename), _file_endian(file_endian), _hash_coord_tol(hash_coord_tol) {};
+			BaseParser(const std::string& filename, const boost::endian::order file_endian = boost::endian::order::native, const float hash_coord_tol = 1e-5f, const unsigned int slice_depth_dir = 2): _filename(filename), _file_endian(file_endian), _hash_coord_tol(hash_coord_tol), _slice_depth_dir(slice_depth_dir) {};
 			
 			virtual ~BaseParser() = default;
 			
@@ -31,6 +31,7 @@ namespace Parser {
 			std::string _filename;
 			boost::endian::order _file_endian;
 			float _hash_coord_tol;
+			unsigned int _slice_depth_dir;
 	};
 
 }

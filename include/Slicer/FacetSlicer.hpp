@@ -14,6 +14,8 @@ namespace Slicer {
 			~FacetSlicer() = default;
 
 			void sliceGeometry();
+		private:
+			
 	};
 
 }
